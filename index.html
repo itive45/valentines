@@ -1,62 +1,56 @@
-<!DOCTYPE html>
 
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ultimate Valentine 💖</title>
   <link rel="stylesheet" href="style.css">
-  <!-- Preload assets for faster startup -->
+
+  <!-- Preload important assets for fast load -->
   <link rel="preload" href="assets/rose.png" as="image">
   <link rel="preload" href="assets/heart-cursor.png" as="image">
   <link rel="preload" href="assets/catch-sound.mp3" as="audio">
 </head>
 <body>
-  <!-- Background music will start on first click -->
-  <audio id="bgMusic" loop preload="auto">
+  <!-- Background music (starts on first click) -->
+  <audio id="bg-Music" loop preload="auto">
     <source src="assets/bg-music.mp3" type="audio/mpeg">
   </audio>
 
   <div class="game-container">
     <h1>Catch My Heart & Roses! 🌹❤️</h1>
-    <p>Click anywhere to start the music and play!</p>
+    <p>Click anywhere to start the music and play the game!</p>
     <div id="score">Score: 0</div>
     <div id="gameArea"></div>
 
-```
-<!-- Love video lazy-loaded -->
-<div id="winMessage" class="hidden">
-  <h2>💖 You Win! 💖</h2>
-  <p>You melted my heart! Forever yours ❤️</p>
-  <video id="loveVideo" width="400" controls preload="none">
-    <source src="assets/love-video.mp4" type="video/mp4">
-  </video>
-</div>
-```
-
+    <!-- Win message with lazy-loaded video -->
+    <div id="winMessage" class="hidden">
+      <h2>💖 You Win! 💖</h2>
+      <p>You melted my heart! Forever yours ❤️</p>
+      <video id="love-Video" width="400" controls preload="none">
+        <source src="assets/love-video.mp4" type="video/mp4">
+      </video>
+    </div>
   </div>
-<!-- Your existing scripts -->
-<script src="script.js"></script>
 
-<!-- Play music/video on first click -->
-<script>
-const bgMusic = document.getElementById('bgMusic');
-const loveVideo = document.getElementById('loveVideo');
+  <!-- Your main JS -->
+  <script src="script.js"></script>
 
-document.addEventListener('click', () => {
-    // play background music
-    bgMusic.play().catch(() => console.log('Music blocked until click'));
+  <!-- Play music and prepare video on first click -->
+  <script>
+    const bg-Music = document.getElementById('bg-Music');
+    const love-Video = document.getElementById('love-Video');
 
-    // preload video (if winMessage exists)
-    if (document.getElementById('winMessage') && !loveVideo.src) {
-        loveVideo.load();
-    }
-}, { once: true }); // runs only on first click
-</script>
+    document.addEventListener('click', () => {
+      // Start background music
+      bg-Music.play().catch(() => console.log('Music blocked until click'));
+
+      // Preload video if win message exists
+      if (document.getElementById('winMessage') && !love-Video.src) {
+        love-Video.load();
+      }
+    }, { once: true }); // Only runs on first click
+  </script>
 </body>
 </html>
-
-
-</body>
-</html>
-
