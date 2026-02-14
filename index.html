@@ -12,14 +12,14 @@
   <link rel="preload" href="assets/catch-sound.mp3" as="audio">
 </head>
 <body>
-  <!-- Background music autoplay -->
-  <audio id="bgMusic" autoplay loop preload="auto">
+  <!-- Background music (starts on first click) -->
+  <audio id="bgMusic" loop preload="auto">
     <source src="assets/bg-music.mp3" type="audio/mpeg">
   </audio>
 
   <div class="game-container">
     <h1>Catch My Heart & Roses! 🌹❤️</h1>
-    <p>Enjoy the game with music playing automatically!</p>
+    <p>Click anywhere to start the music and play the game!</p>
     <div id="score">Score: 0</div>
     <div id="gameArea"></div>
 
@@ -33,15 +33,23 @@
     </div>
   </div>
 
-  <!-- Main JS -->
+  <!-- Your main JS -->
   <script src="script.js"></script>
 
-  <!-- Preload video immediately but it won't auto-play -->
+  <!-- Play music and prepare video on first click -->
   <script>
+    const bgMusic = document.getElementById('bgMusic');
     const loveVideo = document.getElementById('loveVideo');
-    if (loveVideo) {
-      loveVideo.load(); // preload video for smoother playback when she wins
-    }
+
+    document.addEventListener('click', () => {
+      // Start background music
+      bgMusic.play().catch(() => console.log('Music blocked until click'));
+
+      // Preload video if win message exists
+      if (document.getElementById('winMessage') && !loveVideo.src) {
+        loveVideo.load();
+      }
+    }, { once: true }); // Only runs on first click
   </script>
 </body>
 </html>
