@@ -1,0 +1,94 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to top, #ffe6e6, #ff99cc);
+  text-align: center;
+  overflow: hidden;
+  cursor: url('assets/heart-cursor.png'), auto;
+}
+
+h1 { color: #ff1a75; margin-top: 20px; }
+p { color: #99004d; font-size: 1.2em; }
+
+.game-container { position: relative; width: 100%; height: 90vh; }
+#score { font-size: 1.5em; color: #ff004d; margin: 10px; }
+
+#gameArea {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  border: 2px dashed #ff66b3;
+  overflow: hidden;
+  margin-top: 10px;
+  background: rgba(255,255,255,0.2);
+}
+
+/* Hearts */
+.heart, .smallHeart, .rose {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  transform: rotate(-45deg);
+}
+
+.heart::before, .heart::after,
+.smallHeart::before, .smallHeart::after {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: red;
+  border-radius: 50%;
+}
+
+.heart::before, .smallHeart::before { top: -15px; left: 0; }
+.heart::after, .smallHeart::after { left: 15px; top: 0; }
+
+/* Rose */
+.rose {
+  background: url('assets/rose.png') no-repeat center center;
+  background-size: cover;
+  width: 40px;
+  height: 40px;
+  transform: rotate(0deg);
+}
+
+/* Floating messages */
+.floatingMsg {
+  position: absolute;
+  color: #ff1a75;
+  font-weight: bold;
+  font-size: 16px;
+  user-select: none;
+  animation: sparkle 1.5s ease-out forwards;
+}
+
+@keyframes sparkle {
+  0% {opacity: 1; transform: translateY(0);}
+  100% {opacity: 0; transform: translateY(-50px);}
+}
+
+#winMessage {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ff1a75;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  z-index: 10;
+}
+
+.hidden { display: none; }
+
+/* Fireworks */
+.firework {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: yellow;
+  border-radius: 50%;
+}

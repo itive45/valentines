@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ultimate Valentine 💖</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Preload assets for faster startup -->
+  <link rel="preload" href="assets/rose.png" as="image">
+  <link rel="preload" href="assets/heart-cursor.png" as="image">
+  <link rel="preload" href="assets/catch-sound.mp3" as="audio">
+</head>
+<body>
+  <!-- Background music will start on first click -->
+  <audio id="bgMusic" loop preload="auto">
+    <source src="assets/bg-music.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="game-container">
+    <h1>Catch My Heart & Roses! 🌹❤️</h1>
+    <p>Click anywhere to start the music and play!</p>
+    <div id="score">Score: 0</div>
+    <div id="gameArea"></div>
+
+```
+<!-- Love video lazy-loaded -->
+<div id="winMessage" class="hidden">
+  <h2>💖 You Win! 💖</h2>
+  <p>You melted my heart! Forever yours ❤️</p>
+  <video id="loveVideo" width="400" controls preload="none">
+    <source src="assets/love-video.mp4" type="video/mp4">
+  </video>
+</div>
+```
+
+  </div>
+
+  <script src="script.js"></script>
+
+  <script>
+    // Play background music on first click anywhere
+    const bgMusic = document.getElementById('bgMusic');
+    document.addEventListener('click', () => {
+      bgMusic.play().catch(() => console.log('Music blocked until user interaction'));
+    }, { once: true });
+  </script>
+
+</body>
+</html>
