@@ -35,16 +35,28 @@
 ```
 
   </div>
+<!-- Your existing scripts -->
+<script src="script.js"></script>
 
-  <script src="script.js"></script>
+<!-- Play music/video on first click -->
+<script>
+const bgMusic = document.getElementById('bgMusic');
+const loveVideo = document.getElementById('loveVideo');
 
-  <script>
-    // Play background music on first click anywhere
-    const bgMusic = document.getElementById('bgMusic');
-    document.addEventListener('click', () => {
-      bgMusic.play().catch(() => console.log('Music blocked until user interaction'));
-    }, { once: true });
-  </script>
+document.addEventListener('click', () => {
+    // play background music
+    bgMusic.play().catch(() => console.log('Music blocked until click'));
+
+    // preload video (if winMessage exists)
+    if (document.getElementById('winMessage') && !loveVideo.src) {
+        loveVideo.load();
+    }
+}, { once: true }); // runs only on first click
+</script>
+</body>
+</html>
+
 
 </body>
 </html>
+
